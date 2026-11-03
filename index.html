@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Surat Lamaran Kerja</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>JobLetter</h1>
+    <p>Buat surat lamaran kerja profesional dengan mudah</p>
+</header>
+
+<main class="container">
+
+    <section class="form-section">
+        <h2>Data Pelamar</h2>
+
+        <form id="letterForm">
+
+            <label>Nama Lengkap</label>
+            <input type="text" id="nama" placeholder="Nama lengkap" required>
+
+            <label>Tempat, Tanggal Lahir</label>
+            <input type="text" id="ttl" placeholder="Jakarta, 01 Januari 2000">
+
+            <label>Jenis Kelamin</label>
+            <select id="gender">
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
+            </select>
+
+            <label>Pendidikan Terakhir</label>
+            <input type="text" id="pendidikan" placeholder="S1 Teknik Informatika">
+
+            <label>Alamat</label>
+            <textarea id="alamat" placeholder="Alamat lengkap"></textarea>
+
+            <label>Nomor HP</label>
+            <input type="tel" id="hp" placeholder="08xxxxxxxxxx">
+
+            <label>Email</label>
+            <input type="email" id="email" placeholder="email@gmail.com">
+
+            <hr>
+
+            <h2>Informasi Perusahaan</h2>
+
+            <label>Nama Perusahaan</label>
+            <input type="text" id="perusahaan" placeholder="PT. Contoh Indonesia">
+
+            <label>Alamat Perusahaan</label>
+            <textarea id="alamatPerusahaan" placeholder="Alamat perusahaan"></textarea>
+
+            <label>Posisi yang Dilamar</label>
+            <input type="text" id="posisi" placeholder="Staff Administrasi">
+
+            <label>Tanggal Surat</label>
+            <input type="date" id="tanggal">
+
+            <label>Isi Surat</label>
+            <textarea id="isi" rows="6">Dengan hormat,
+
+Berdasarkan informasi lowongan pekerjaan yang saya peroleh, saya bermaksud mengajukan lamaran pekerjaan untuk posisi tersebut.
+
+Saya memiliki motivasi kerja yang tinggi, mampu bekerja secara individu maupun tim, serta bersedia belajar dan mengembangkan kemampuan.
+
+Besar harapan saya untuk diberikan kesempatan mengikuti tahap seleksi selanjutnya.</textarea>
+
+            <label>Upload Foto (Opsional)</label>
+            <input type="file" id="foto" accept="image/*">
+
+            <hr>
+
+            <h2>Tanda Tangan Digital</h2>
+            <p class="hint">Silakan tanda tangan menggunakan mouse atau jari.</p>
+
+            <canvas id="signature" width="400" height="160"></canvas>
+
+            <button type="button" id="clearSignature" class="btn-secondary">
+                Hapus Tanda Tangan
+            </button>
+
+            <div class="actions">
+                <button type="button" id="resetBtn" class="btn-secondary">
+                    Reset Form
+                </button>
+
+                <button type="button" id="printBtn" class="btn-primary">
+                    Cetak / PDF
+                </button>
+            </div>
+
+        </form>
+    </section>
+
+    <section class="preview-section">
+        <h2>Preview Surat Lamaran</h2>
+
+        <article id="paper">
+
+            <div class="letter-header">
+                <div>
+                    <h2>SURAT LAMARAN KERJA</h2>
+                </div>
+                <img id="previewFoto" class="profile-photo" hidden>
+            </div>
+
+            <p class="date" id="previewTanggal">Jakarta, -</p>
+
+            <p>Kepada Yth.</p>
+            <p><strong id="previewPerusahaan">Nama Perusahaan</strong></p>
+            <p id="previewAlamatPerusahaan">Alamat Perusahaan</p>
+
+            <p>Dengan hormat,</p>
+
+            <p>
+                Saya yang bertanda tangan di bawah ini:
+            </p>
+
+            <table>
+                <tr>
+                    <td>Nama</td>
+                    <td>: <span id="previewNama">-</span></td>
+                </tr>
+                <tr>
+                    <td>Tempat/Tanggal Lahir</td>
+                    <td>: <span id="previewTTL">-</span></td>
+                </tr>
+                <tr>
+                    <td>Jenis Kelamin</td>
+                    <td>: <span id="previewGender">-</span></td>
+                </tr>
+                <tr>
+                    <td>Pendidikan</td>
+                    <td>: <span id="previewPendidikan">-</span></td>
+                </tr>
+                <tr>
+                    <td>Alamat</td>
+                    <td>: <span id="previewAlamat">-</span></td>
+                </tr>
+                <tr>
+                    <td>No. HP</td>
+                    <td>: <span id="previewHP">-</span></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>: <span id="previewEmail">-</span></td>
+                </tr>
+            </table>
+
+            <p>
+                Dengan ini saya mengajukan lamaran pekerjaan
+                untuk posisi <strong id="previewPosisi">-</strong>.
+            </p>
+
+            <p id="previewIsi" class="letter-content"></p>
+
+            <p>
+                Demikian surat lamaran ini saya buat dengan
+                sebenar-benarnya. Atas perhatian dan kesempatan
+                yang diberikan, saya mengucapkan terima kasih.
+            </p>
+
+            <div class="signature-area">
+                <p>Hormat saya,</p>
+                <img id="signaturePreview" alt="Tanda tangan digital">
+                <p><strong id="previewNamaTTD">Nama Pelamar</strong></p>
+            </div>
+
+        </article>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 JobLetter - Generator Surat Lamaran Kerja</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
